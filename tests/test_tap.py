@@ -30,12 +30,9 @@ def test_tap(width=5):
     parameters = {
         'width': width,
         'id': 1,
-        'version': (2**4)-1,
-        'part': (2**16)-1,
-        'man_num': (2**11)-1,
-        #'version': 0,
-        #'part': 0,
-        #'man_num': 0,
+        'version': 0xc,
+        'part': 0xafe,
+        'man_num': 0xf00d >> 1,
         'sync_mode': 1
     }
 
@@ -50,7 +47,6 @@ def test_tap(width=5):
     t.eval()
 
     # reset the driver
-    t.zero()
     t.reset()
 
     # read ID
@@ -62,15 +58,11 @@ def test_tap(width=5):
         simulator='iverilog',
         ext_libs=[Path('../ignore/DW_tap.v').resolve()],
         parameters=parameters,
-        ext_model_file=True,
-        disp_type='realtime'
+        ext_model_file=True
     )
 
     # print ID
-    #version_vec_cnst[3:0],part_vec_cnst[15:0],
-                         #man_num_vec_cnst[10:0],1'b1
-
-    print('{0:0{1}x}'.format(id_val.value,8))
+    print('{0:0{1}x}'.format(id_val.value, 8))
 
 if __name__ == '__main__':
     test_tap()
