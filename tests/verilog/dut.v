@@ -8,9 +8,9 @@ module dut(
     DW_tap #(
         .width(5),
         .id(1),
-        .version('hc),
-        .part('hafe),
-        .man_num('hf00d),
+        .version(4'hc),
+        .part(16'hafef),
+        .man_num((12'h00d) >> 1),
         .sync_mode(1)
     ) DW_tap_i (
         // inputs
