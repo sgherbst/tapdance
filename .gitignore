@@ -3,6 +3,7 @@ noupload/
 .idea
 parser.out
 parsetab.py
+*.svf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

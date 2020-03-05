@@ -9,7 +9,7 @@ def test_tap(width=5):
     dut = m.define_from_verilog_file(TOP / 'tests' / 'verilog' / 'dut.v')[0]
 
     # instantiate tester
-    t = JTAGLowLevelDriver(dut, width=width)
+    t = JTAGLowLevelDriver(dut, width=width, svf_file='out.svf')
 
     # reset the driver
     t.reset()
